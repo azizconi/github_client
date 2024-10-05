@@ -80,7 +80,10 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.0")
     implementation("io.ktor:ktor-client-cio:2.3.0")
     implementation("io.ktor:ktor-client-serialization:2.3.0")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.0")
     implementation("io.ktor:ktor-client-logging:2.3.0")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.0")
+
 
     implementation("androidx.room:room-runtime:2.5.1")
     ksp("androidx.room:room-compiler:2.5.1")
@@ -91,4 +94,10 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
+
+    //Coil
+    val coil = "2.7.0"
+    implementation("io.coil-kt:coil:$coil")
+    implementation("io.coil-kt:coil-compose:$coil")
+    implementation("com.google.accompanist:accompanist-coil:0.13.0")
 }
