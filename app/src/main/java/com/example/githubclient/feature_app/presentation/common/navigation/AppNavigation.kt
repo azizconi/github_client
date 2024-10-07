@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.githubclient.feature_app.presentation.downloads.DownloadsScreen
 import com.example.githubclient.feature_app.presentation.search.SearchScreen
 
 @Composable
@@ -13,7 +14,11 @@ fun AppNavigation() {
     NavHost(navController = navController, startDestination = Screen.Search) {
 
         composable<Screen.Search> {
-            SearchScreen()
+            SearchScreen(navController = navController)
+        }
+
+        composable<Screen.Downloads> {
+            DownloadsScreen(navController = navController)
         }
 
     }

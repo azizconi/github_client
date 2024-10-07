@@ -3,6 +3,7 @@ package com.example.githubclient.feature_app.presentation.common.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,14 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SearchTextField(
+fun RowScope.SearchTextField(
     value: TextFieldValue,
     onValueChanged: (TextFieldValue) -> Unit
 ) {
 
     Box(
         modifier = Modifier
-            .fillMaxWidth()
+            .weight(1f)
             .padding(vertical = 8.dp)
             .background(Color(0xFFF1F1F1), shape = MaterialTheme.shapes.small)
             .padding(horizontal = 16.dp, vertical = 12.dp)

@@ -100,4 +100,9 @@ dependencies {
     implementation("io.coil-kt:coil:$coil")
     implementation("io.coil-kt:coil-compose:$coil")
     implementation("com.google.accompanist:accompanist-coil:0.13.0")
+
+    implementation("com.google.accompanist:accompanist-permissions:0.32.0")
+
+    // gson
+    implementation("com.google.code.gson:gson:2.11.0")
 }

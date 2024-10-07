@@ -5,5 +5,6 @@ import kotlinx.serialization.Serializable
 sealed interface Screen {
 
     @Serializable data object Search
+    @Serializable data object Downloads
 
 }

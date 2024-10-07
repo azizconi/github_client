@@ -1,12 +1,15 @@
-package com.example.githubclient.feature_app.data.remote.response.github_repository
+package com.example.githubclient.feature_app.domain.entity.search_history
 
-import com.example.githubclient.feature_app.domain.entity.download.DownloadEntity
-import com.example.githubclient.feature_app.domain.entity.search_history.SearchHistoryEntity
-import kotlinx.serialization.Serializable
-import java.util.Date
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.githubclient.feature_app.data.remote.response.github_repository.GithubRepositoryResponseModel
+import com.example.githubclient.feature_app.data.remote.response.github_repository.License
+import com.example.githubclient.feature_app.data.remote.response.github_repository.Owner
 
-@Serializable
-data class GithubRepositoryResponseModel(
+@Entity(tableName = "github_repositories")
+data class SearchHistoryEntity(
+    @PrimaryKey
+    val id: Int,
     val allow_forking: Boolean?,
     val archive_url: String?,
     val archived: Boolean?,
@@ -45,7 +48,6 @@ data class GithubRepositoryResponseModel(
     val homepage: String?,
     val hooks_url: String,
     val html_url: String,
-    val id: Int,
     val is_template: Boolean?,
     val issue_comment_url: String?,
     val issue_events_url: String?,
@@ -57,7 +59,6 @@ data class GithubRepositoryResponseModel(
     val license: License?,
     val merges_url: String?,
     val milestones_url: String?,
-//    val mirror_url: Any?,
     val name: String?,
     val node_id: String?,
     val notifications_url: String?,
@@ -79,7 +80,7 @@ data class GithubRepositoryResponseModel(
     val svn_url: String?,
     val tags_url: String?,
     val teams_url: String?,
-    val topics: List<String>?,
+    val topics: List<String>,
     val trees_url: String?,
     val updated_at: String?,
     val url: String?,
@@ -87,30 +88,12 @@ data class GithubRepositoryResponseModel(
     val watchers: Int?,
     val watchers_count: Int?,
     val web_commit_signoff_required: Boolean?,
+
+    val created: Long,
+    val updated: Long,
 ) {
-
-    fun toDownloadEntity(
-        isDownloaded: Boolean,
-        isLoading: Boolean,
-        downloadedDate: Long,
-    ): DownloadEntity {
-        return DownloadEntity(
-            id = id,
-            description = description,
-            full_name = full_name,
-            git_url = git_url,
-            html_url = html_url,
-            name = name,
-            owner = owner,
-            url = url,
-            isDownloaded = isDownloaded,
-            isLoading = isLoading,
-            downloadedDate = downloadedDate,
-        )
-    }
-
-    fun toSearchHistoryModel(): SearchHistoryEntity {
-        return SearchHistoryEntity(
+    fun toResponseModel(): GithubRepositoryResponseModel {
+        return GithubRepositoryResponseModel(
             id = id,
             allow_forking = allow_forking,
             archive_url = archive_url,
@@ -181,7 +164,7 @@ data class GithubRepositoryResponseModel(
             svn_url = svn_url,
             tags_url = tags_url,
             teams_url = teams_url,
-            topics = topics ?: emptyList(),
+            topics = topics,
             trees_url = trees_url,
             updated_at = updated_at,
             url = url,
@@ -189,10 +172,7 @@ data class GithubRepositoryResponseModel(
             watchers = watchers,
             watchers_count = watchers_count,
             web_commit_signoff_required = web_commit_signoff_required,
-            private = private,
-            created = Date().time,
-            updated = Date().time
+            private = private
         )
     }
-
 }
