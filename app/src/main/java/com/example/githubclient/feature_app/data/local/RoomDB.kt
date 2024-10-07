@@ -24,7 +24,7 @@ import com.example.githubclient.feature_app.domain.entity.search_history.SearchH
 @TypeConverters(
     OwnerTypeConverter::class,
     LicenseTypeConverter::class,
-    StringListTypeConverter::class,
+    StringListTypeConverter::class
 )
 abstract class RoomDB : RoomDatabase() {
 
